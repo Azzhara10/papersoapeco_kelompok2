@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper Soap Eco</title>
+
+<link rel="stylesheet" href="style.css">
+<!-- Font Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+<!-- Navbar -->
+<div class="navbar">
+  <img src="images/logo.png" class="logo">
+  <div class="menu">
+    <a href="index.html">Home</a>
+
+   <div class="dropdown">
+  <button class="dropbtn">Produk</button>
+    
+    <div class="dropdown-content">
+      <a href="detailproduk1.html">Pocket Soap</a>
+      <a href="detailprodukrefill.html">Refill Soap</a>
+    </div>
+  </div>
+    <a href="artikel_depan.html">Artikel</a>
+  </div>
+
+ <div class="right">
+    <a href="Login.html" class="login-link">
+      Login
+    </a>
+
+     <a href="keranjang.html" class="cart-link">
+    <i class="fa-solid fa-cart-shopping"></i>
+  </a>
+  </div>
+</div>
+
+
+<!-- Back button -->
+<!-- Back button + Title -->
+<div class="cart-header">
+  <a href="index.html" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i>
+  </a>
+
+</div>
+
+    <!-- MAIN -->
+    <main class="main-content">
+        <div class="auth-container">
+            <h1 class="auth-title">Masuk ke Akun</h1>
+            <p class="auth-subtitle">Silahkan masuk untuk melanjutkan</p>
+
+    <!-- TAB -->
+    <div class="auth-tabs">      
+        <a href="Login.html" class="tab-btn active">
+            Login
+            </a>
+        <a href="Daftar.html" class="tab-btn">
+            Daftar
+            </a>
+    </div>
+           
+    <!-- FORM -->          
+    <form class="auth-form">
+        <h2 class="form-title">Login</h2>
+
+
+    <!-- Email -->
+        <label>Email</label>
+        <input
+            type="email"
+            name="email"
+            placeholder="Masukkan email Anda"
+            required
+        >
+
+    <!-- Password -->
+        <label>Password</label>
+        <div class="password-wrapper">
+            <input
+            type="password"
+            name="password"
+            placeholder="Masukkan password Anda"
+            required
+            minlength="6">
+           
+            <i class="fa fa-eye"></i>
+        </div>
+
+
+
+
+   <!-- Button -->
+<button type="button" class="login-btn" onclick="loginUser()">
+    Login
+</button>
+
+
+
+
+    <!-- Links -->
+<div class="links">
+   <p class="lupa">Lupa Password?</p>
+
+
+   <!-- Divider -->
+   <div class="divider">
+       <span>atau</span>
+   </div>
+
+
+   <!-- Google Login -->
+   <button class="google-btn">
+       <img src="images/google.png" class="google-icon">
+       Masuk dengan Google
+   </button>
+
+
+   <p class="auth-note">Belum Punya Akun? <a href="Daftar.html" class="auth-link">Daftar</a></p>
+   </p>
+
+</div>
+    </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+
+    <script>
+
+function loginUser() {
+
+  let email = document.querySelector("input[name='email']").value;
+  let password = document.querySelector("input[name='password']").value;
+
+  if (!email || !password) {
+    alert("Email dan password harus diisi!");
+    return;
+  }
+
+  // ambil data user dari register
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  // cek user cocok atau tidak
+  let user = users.find(u =>
+    u.email === email && u.password === password
+  );
+
+  if (!user) {
+    alert("Email atau password salah!");
+    return;
+  }
+
+  // simpan status login
+  localStorage.setItem("isLogin", "true");
+  localStorage.setItem("namaUser", user.nama);
+
+  alert("Login berhasil!");
+
+  // pindah ke home
+  window.location.href = "index.html";
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

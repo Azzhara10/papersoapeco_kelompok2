@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+<title>Paper Soap Eco</title>
+
+
+
+
+<link rel="stylesheet" href="style.css">
+<!-- Font Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+
+
+
+<body>
+<!-- Navbar -->
+<div class="navbar">
+  <img src="images/logo.png" class="logo">
+  <div class="menu">
+    <a href="index.html">Home</a>
+
+   <div class="dropdown">
+  <button class="dropbtn">Produk</button>
+    
+    <div class="dropdown-content">
+      <a href="detailproduk1.html">Pocket Soap</a>
+      <a href="detailprodukrefill.html">Refill Soap</a>
+    </div>
+  </div>
+    <a href="artikel_depan.html">Artikel</a>
+  </div>
+
+ <div class="right">
+    <a href="Login.html" class="login-link">
+      Login
+    </a>
+
+     <a href="keranjang.html" class="cart-link">
+    <i class="fa-solid fa-cart-shopping"></i>
+  </a>
+  </div>
+</div>
+
+
+
+
+<!-- Back button -->
+<!-- Back button + Title -->
+<div class="cart-header">
+  <a href="index.html" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i>
+  </a>
+
+</div>
+
+<!-- MAIN -->
+    <main class="main-content">
+        <div class="auth-container">
+            <h1 class="auth-title">Buat Akun Baru</h1>
+            <p class="auth-subtitle">Daftar untuk mulai berbelanja</p>
+
+
+
+
+<!-- TAB -->
+       <div class="auth-tabs">      
+        <a href="Login.html" class="tab-btn">
+            Login
+            </a>
+        <a href="Daftar.html" class="tab-btn active">
+            Daftar
+            </a>
+    </div>
+
+
+<!-- FORM -->
+    <form class="auth-form">
+        <h2 class="form-title">Daftar</h2>
+
+<!-- Nama Lengkap -->
+    <label class="form-label">Nama Lengkap</label>
+    <input
+        type="text"
+        class="form-input"
+        placeholder="Masukkan Nama Lengkap"
+        required>
+
+
+<!-- Email -->
+    <label class="form-label">Email</label>
+    <input
+        type="email"
+        class="form-input"
+        placeholder="Masukkan Email Anda"
+        required>
+
+
+<!-- Password -->
+    <label class="form-label">Password</label>
+    <div class="password-wrapper">
+        <input
+            type="password"
+            class="form-input"
+            placeholder="Buat Password"
+            required
+            minlength="6">
+            <i class="fa fa-eye password-icon"></i>
+    </div>
+
+
+<!-- Konfirmasi Password -->
+    <label class="form-label">Konfirmasi Password</label>
+    <div class="password-wrapper">
+    <input
+        type="password"
+        class="form-input"
+        placeholder="Konfirmasi Password"
+        required
+        minlength="6">
+        <i class="fa fa-eye password-icon"></i>
+    </div>
+
+
+<!-- Button -->
+    <button type="submit" class="daftar-btn">
+        Daftar
+    </button>
+
+
+<!-- Link -->
+    <p class="auth-note">Sudah Punya Akun? <a href="Login.html" class="auth-link">Login</a></p>
+    </form>
+        </div>
+    </main>
+
+
+<script>
+
+// ambil form
+const form = document.querySelector(".auth-form");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let nama = document.querySelectorAll(".form-input")[0].value;
+  let email = document.querySelectorAll(".form-input")[1].value;
+  let password = document.querySelectorAll(".form-input")[2].value;
+  let confirmPassword = document.querySelectorAll(".form-input")[3].value;
+
+  // validasi kosong
+  if (!nama || !email || !password || !confirmPassword) {
+    alert("Semua field harus diisi!");
+    return;
+  }
+
+  // cek password sama
+  if (password !== confirmPassword) {
+    alert("Password tidak sama!");
+    return;
+  }
+
+  // ambil data user lama
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  // cek email sudah ada
+  let exist = users.find(u => u.email === email);
+
+  if (exist) {
+    alert("Email sudah terdaftar!");
+    return;
+  }
+
+  // simpan user baru
+  users.push({
+    nama: nama,
+    email: email,
+    password: password
+  });
+
+  localStorage.setItem("users", JSON.stringify(users));
+
+  alert("Pendaftaran berhasil!");
+
+  // arahkan ke login
+  window.location.href = "Login.html";
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
+

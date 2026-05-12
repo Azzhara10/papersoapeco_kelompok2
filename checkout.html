@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Paper Soap Eco</title>
+
+
+<link rel="stylesheet" href="style.css">
+<!-- Font Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+
+<body>
+
+
+<!-- Navbar -->
+<div class="navbar">
+  <img src="images/logo.png" class="logo">
+  <div class="menu">
+    <a href="index.html">Home</a>
+
+   <div class="dropdown">
+  <button class="dropbtn">Produk</button>
+    
+    <div class="dropdown-content">
+      <a href="detailproduk1.html">Pocket Soap</a>
+      <a href="detailprodukrefill.html">Refill Soap</a>
+    </div>
+  </div>
+    <a href="artikel_depan.html">Artikel</a>
+  </div>
+
+ <div class="right">
+    <div id="user-area">
+  <a href="Login.html" class="login-link">Login</a>
+</div>
+
+     <a href="keranjang.html" class="cart-link">
+    <i class="fa-solid fa-cart-shopping"></i>
+  </a>
+  </div>
+</div>
+
+
+<!-- Back button -->
+<!-- Back button + Title -->
+<div class="cart-header">
+  <a href="keranjang.html" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i>
+  </a>
+
+  <h1 class="cart-heading">
+    Keranjang Saya
+  </h1>
+
+
+</div>
+
+<!-- CONTENT -->
+<main class="checkout-container">
+
+  <!-- INFORMASI PEMESAN -->
+  <div class="checkout-card">
+    <h3 class="checkout-title">Informasi Penerima</h3>
+
+    <label>Nama Lengkap</label>
+    <input type="text" placeholder="Masukkan nama lengkap">
+
+    <label>Nomor HP</label>
+    <input type="text" placeholder="Masukkan nomor HP">
+
+    <label>Alamat Lengkap</label>
+    <textarea placeholder="Masukkan alamat lengkap"></textarea>
+  </div>
+
+  <!-- DETAIL PESANAN -->
+  <div class="checkout-card">
+    <h3 class="checkout-title">Detail Pesanan</h3>
+    <div id="order-items"></div>
+  </div>
+
+  <!-- PEMBAYARAN -->
+  <div class="checkout-card">
+    <h3 class="checkout-title">Metode Pembayaran</h3>
+
+    <div class="payment-option" onclick="selectPayment(this, 'Transfer Bank')">
+  <i class="fa-solid fa-building-columns"></i>
+  <span>Transfer Bank</span>
+</div>
+
+<div class="payment-option" onclick="selectPayment(this, 'E-Wallet')">
+  <i class="fa-solid fa-wallet"></i>
+  <span>E-Wallet</span>
+</div>
+
+<div class="payment-option" onclick="selectPayment(this, 'COD')">
+  <i class="fa-solid fa-money-bill-wave"></i>
+  <span>COD</span>
+</div>
+  </div>
+
+  <!-- RINGKASAN -->
+  <div class="checkout-card">
+    <h3 class="checkout-title">Ringkasan Pesanan</h3>
+
+    <div id="summary-items"></div>
+
+    <hr>
+
+    <div id="summary-total"></div>
+  </div>
+
+  <!-- BUTTON -->
+  <button class="order-btn" onclick="buatPesanan()">
+    Buat Pesanan
+  </button>
+
+</main>
+
+<script>
+
+function formatRupiah(angka) {
+  return "Rp " + angka.toLocaleString("id-ID");
+}
+
+/* =======================
+   CHECKOUT LOAD
+======================= */
+function loadCheckout() {
+
+  let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+
+  let orderContainer = document.getElementById("order-items");
+  let summaryContainer = document.getElementById("summary-items");
+  let totalContainer = document.getElementById("summary-total");
+
+  orderContainer.innerHTML = "";
+  summaryContainer.innerHTML = "";
+
+  let total = 0;
+
+  keranjang.forEach(item => {
+
+    let subtotal = item.harga * item.qty;
+    total += subtotal;
+
+    orderContainer.innerHTML += `
+      <div class="order-item">
+        <span class="order-name">${item.nama} x${item.qty}</span>
+        <span class="order-price">${formatRupiah(subtotal)}</span>
+      </div>
+    `;
+
+    summaryContainer.innerHTML += `
+      <div class="summary-item">
+        <span>${item.nama} x${item.qty}</span>
+        <span>${formatRupiah(subtotal)}</span>
+      </div>
+    `;
+  });
+
+  totalContainer.innerHTML = `
+    <div class="summary-total">
+      <span>Total</span>
+      <span>${formatRupiah(total)}</span>
+    </div>
+  `;
+}
+
+/* =======================
+   PAYMENT SELECT
+======================= */
+let selectedPayment = "";
+
+function selectPayment(element, method) {
+
+  document.querySelectorAll(".payment-option")
+    .forEach(el => el.classList.remove("active"));
+
+  element.classList.add("active");
+
+  selectedPayment = method;
+}
+
+/* =======================
+   CHECKOUT BUTTON
+======================= */
+function buatPesanan() {
+
+  let nama = document.querySelectorAll("input")[0].value;
+  let hp = document.querySelectorAll("input")[1].value;
+  let alamat = document.querySelector("textarea").value;
+
+  if (!nama || !hp || !alamat) {
+    alert("Harap isi semua data penerima!");
+    return;
+  }
+
+  if (!selectedPayment) {
+    alert("Pilih metode pembayaran!");
+    return;
+  }
+
+  let keranjang = JSON.parse(localStorage.getItem("keranjang")) || [];
+
+  if (keranjang.length === 0) {
+    alert("Keranjang kosong!");
+    return;
+  }
+
+  alert(
+    "Pesanan berhasil dibuat!\n\n" +
+    "Nama: " + nama + "\n" +
+    "Pembayaran: " + selectedPayment
+  );
+
+  localStorage.removeItem("keranjang");
+  window.location.href = "index.html";
+}
+
+/* =======================
+   INIT
+======================= */
+loadCheckout();
+
+</script>
+
+
+
+
+</body>
+</html>

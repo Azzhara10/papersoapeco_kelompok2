@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Paper Soap Eco</title>
+
+
+<link rel="stylesheet" href="style.css">
+<!-- Font Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+<!-- Navbar -->
+<div class="navbar">
+  <img src="images/logo.png" class="logo">
+  <div class="menu">
+    <a href="index.html">Home</a>
+
+   <div class="dropdown">
+  <button class="dropbtn">Produk</button>
+    
+    <div class="dropdown-content">
+      <a href="detailproduk1.html">Pocket Soap</a>
+      <a href="detailprodukrefill.html">Refill Soap</a>
+    </div>
+  </div>
+    <a href="artikel_depan.html">Artikel</a>
+  </div>
+
+ <div class="right">
+   <div id="user-area">
+  <a href="Login.html" class="login-link">Login</a>
+</div>
+
+     <a href="keranjang.html" class="cart-link">
+    <i class="fa-solid fa-cart-shopping"></i>
+  </a>
+  </div>
+</div>
+
+
+<!-- Back button -->
+<!-- Back button + Title -->
+<div class="cart-header">
+  <a href="artikel_depan.html" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i>
+  </a>
+
+  <h1 class="cart-heading_artikel1">
+    Pentingnya Mencuci Tangan Pakai Sabun
+  </h1>
+
+</div>
+
+
+<!-- CONTENT -->
+<div class="container">
+
+
+<!-- Banner -->
+<div class="tentang_perusahaan">
+  <img src="images/artikel1.png">
+</div>
+
+<!-- CONTENT -->
+  <div class="content_artikel1">
+<p>
+      Salah satu organ yang paling banyak digunakan saat beraktivitas adalah tangan.
+      Bagian tubuh ini dapat menyebarkan kuman karena menyentuh sumber penyakit dan tempat umum yang tercemar.
+    </p>
+
+    <p>
+      Meskipun cuci tangan adalah langkah kecil untuk menghentikan rantai penularan penyakit,
+      hal ini memiliki dampak yang signifikan terhadap kesehatan manusia.
+    </p>
+
+    <p>
+      Untuk mendapatkan hasil cuci tangan terbaik, Anda harus menggunakan metode yang tepat,
+      termasuk menggunakan sabun dan air mengalir.
+    </p>
+
+    <h3>Manfaat mencuci tangan dengan sabun:</h3>
+
+    <p>
+      Anak-anak lebih sering memasukkan tangan ke mulut sehingga kuman mudah masuk ke dalam tubuh melalui tangan,
+      makanan, dan minuman yang dikonsumsi.
+    </p>
+
+
+    <p>
+      Cuci tangan dengan sabun dan air mengalir membantu membunuh dan membersihkan kuman dari tangan.
+      Dengan demikian, mencuci tangan dapat membantu anak menghindari penyakit.
+    </p>
+
+
+    <p>
+      Ibu yang menjaga kebersihan tangan dapat mencegah anak sakit akibat makanan yang terkontaminasi.
+      Cuci tangan juga membantu mencegah penyakit menular serta mengurangi risiko infeksi.
+    </p>
+
+
+    <p>
+      Infeksi seperti cacingan pada anak-anak dapat menyebabkan malnutrisi atau kekurangan gizi
+      jika tidak dicegah dengan kebersihan yang baik.
+    </p>
+  </div>
+
+
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <a href="tentangkami.html">Tentang Kami</a>
+      <a href="kebijakanprivasi.html">Kebijakan Privasi</a>
+    </div>
+    <div class="footer-col">
+      <a href="syarat_ketentuan.html">Syarat & Ketentuan</a>
+      <a href="kontak.html">Kontak</a>
+    </div>
+
+
+  </div>
+
+
+  <div class="footer-bottom">
+    © 2026 Paper Soap Eco. All Rights Reserved.
+  </div>
+
+
+</footer>
+
+<script>
+
+  const userArea = document.getElementById("user-area");
+
+  const isLogin = localStorage.getItem("isLogin");
+  const foto = localStorage.getItem("foto");
+
+  if (isLogin === "true") {
+
+    userArea.innerHTML = `
+    
+      <div class="profile-dropdown">
+
+        <img 
+          src="${foto || 'images/user.jpg'}" 
+          class="navbar-profile">
+
+        <div class="profile-menu">
+          <a href="profile.html">Profil</a>
+          <a href="#" onclick="logoutUser()">Logout</a>
+        </div>
+
+      </div>
+    `;
+  }
+
+  function logoutUser() {
+
+    localStorage.removeItem("isLogin");
+
+    alert("Berhasil logout");
+
+    window.location.href = "index.html";
+  }
+
+</script>
+
+</body>
+</html>

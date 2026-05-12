@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Paper Soap Eco</title>
+
+<link rel="stylesheet" href="style.css">
+<!-- Font Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <img src="images/logo.png" class="logo">
+  <div class="menu">
+    <a href="index.html">Home</a>
+
+   <div class="dropdown">
+  <button class="dropbtn">Produk</button>
+    
+    <div class="dropdown-content">
+      <a href="detailproduk1.html">Pocket Soap</a>
+      <a href="detailprodukrefill.html">Refill Soap</a>
+    </div>
+  </div>
+    <a href="artikel_depan.html">Artikel</a>
+  </div>
+
+ <div class="right">
+    <div id="user-area">
+  <a href="Login.html" class="login-link">Login</a>
+</div>
+
+     <a href="keranjang.html" class="cart-link">
+    <i class="fa-solid fa-cart-shopping"></i>
+  </a>
+  </div>
+</div>
+
+
+<!-- Back button -->
+<!-- Back button + Title -->
+<div class="cart-header">
+  <a href="index.html" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i>
+  </a>
+
+  <h1 class="cart-heading_kebijakan">
+    Syarat & Ketentuan
+  </h1>
+
+</div>
+
+<!-- CONTENT -->
+  <div class="content_syarat">
+    <p>
+      Dengan mengakses dan menggunakan website Paper Soap Eco, Anda secara otomatis menyetujui seluruh aturan yang kami buat untuk menjamin keamanan dan kenyamanan bersama. Sebagai pengguna, Anda bertanggung jawab penuh untuk memberikan informasi data diri yang akurat saat mendaftar serta menjaga kerahasiaan kata sandi akun Anda agar tidak disalahgunakan oleh pihak lain. Kami menyediakan produk sabun kertas yang dirancang khusus untuk penggunaan luar (tangan), sehingga kami tidak bertanggung jawab atas efek samping yang muncul akibat penggunaan yang tidak sesuai petunjuk, seperti tertelan atau terkena mata. Seluruh transaksi pembelian yang Anda lakukan melalui website adalah sah dan mengikat, di mana harga produk dapat berubah sewaktu-waktu sesuai dengan kebijakan promo atau kondisi operasional perusahaan.
+    </p>
+
+
+    <p>
+      Mengenai proses pengiriman, kami bekerja sama dengan mitra logistik terpercaya untuk mengantarkan pesanan ke alamat Anda, namun perlu dipahami bahwa segala keterlambatan yang disebabkan oleh pihak kurir berada di luar kendali langsung kami. Jika Anda menerima produk dalam keadaan rusak atau tidak sesuai dengan pesanan, Anda berhak mengajukan komplain atau penukaran barang dengan syarat wajib melampirkan bukti video pembukaan paket (unboxing) maksimal dalam waktu 2x24 jam setelah barang diterima. Terakhir, seluruh konten yang ada di dalam website, mulai dari desain, logo, hingga artikel edukasi, adalah hak milik intelektual Paper Soap Eco yang tidak boleh disalin atau disebarluaskan tanpa izin resmi dari kami demi menjaga orisinalitas dan integritas merek.
+    </p>
+  </div>
+
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <a href="tentangkami.html">Tentang Kami</a>
+      <a href="kebijakanprivasi.html">Kebijakan Privasi</a>
+    </div>
+    <div class="footer-col">
+      <a href="syarat_ketentuan.html">Syarat & Ketentuan</a>
+      <a href="kontak.html">Kontak</a>
+    </div>
+
+
+  </div>
+
+
+  <div class="footer-bottom">
+    © 2026 Paper Soap Eco. All Rights Reserved.
+  </div>
+
+
+</footer>
+
+
+
+<script>
+
+  const userArea = document.getElementById("user-area");
+
+  const isLogin = localStorage.getItem("isLogin");
+  const foto = localStorage.getItem("foto");
+
+  if (isLogin === "true") {
+
+    userArea.innerHTML = `
+    
+      <div class="profile-dropdown">
+
+        <img 
+          src="${foto || 'images/user.jpg'}" 
+          class="navbar-profile">
+
+        <div class="profile-menu">
+          <a href="profile.html">Profil</a>
+          <a href="#" onclick="logoutUser()">Logout</a>
+        </div>
+
+      </div>
+    `;
+  }
+
+  function logoutUser() {
+
+    localStorage.removeItem("isLogin");
+
+    alert("Berhasil logout");
+
+    window.location.href = "index.html";
+  }
+
+</script>
+
+
+
+</body>
+</html>
