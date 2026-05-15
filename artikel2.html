@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <title>Paper Soap Eco</title>
+
 
 <link rel="stylesheet" href="style.css">
 <!-- Font Poppins -->
@@ -13,7 +15,6 @@
 </head>
 
 <body>
-
 <!-- Navbar -->
 <div class="navbar">
   <img src="images/logo.png" class="logo">
@@ -32,7 +33,7 @@
   </div>
 
  <div class="right">
-   <div id="user-area">
+    <div id="user-area">
   <a href="Login.html" class="login-link">Login</a>
 </div>
 
@@ -42,80 +43,71 @@
   </div>
 </div>
 
+
 <!-- Back button -->
 <!-- Back button + Title -->
 <div class="cart-header">
-  <a href="index.html" class="back-btn">
+  <a href="artikel_depan.html" class="back-btn">
     <i class="fa-solid fa-arrow-left"></i>
   </a>
 
-  <h1 class="cart-heading">
-    Detail Produk
+  <h1 class="cart-heading_artikel1">
+    Kenapa Produk Ramah Lingkungan Itu Penting?
   </h1>
+
 </div>
+
+<!-- CONTENT -->
+<div class="container">
+
 
 <!-- Banner -->
-<div class="banner">
-  <img src="images/Produk1.jpeg">
+<div class="tentang_perusahaan">
+  <img src="images/artikel2.png">
 </div>
 
-    <!-- PRODUK -->
-    <div>
-        <h3 class="product-name">Pocket Soap Charm</h3>
-        <p class="product-price_detail">Rp 15.000</p>
-    </div>
-        
-    <!-- DESKRIPSI -->
-    <div class="card_detailproduk1">
-        <h4 class="section-title">Deskripsi</h4>
-        <div class="desc-box">
-            <h5 class="desc-subtitle">Sabun Kertas Portable – Praktis & Higienis</h5>
-            <p class="desc-text">
-                Jaga kebersihan tangan kapan saja dengan sabun kertas yang praktis dibawa ke mana saja.
-            </p>
-            <h6 class="desc-subtitle">Keunggulan:</h6>
-            <ul class="feature-list">
-                <li>Praktis & higienis</li>
-                <li>Mudah dibawa</li>
-                <li>Cepat larut</li>
-                <li>Tersedia refill</li>
-            </ul>
+<!-- CONTENT -->
+  <div class="content_artikel2">
+    <p>
+      Dengan meningkatnya kesadaran akan pentingnya menjaga kelestarian lingkungan,
+      penggunaan produk ramah lingkungan semakin populer.
+      Kita hidup di zaman di mana pengaruh produk yang kita gunakan sehari-hari
+      terhadap lingkungan menjadi semakin tidak dapat diabaikan.
+      Banyak produk konvensional merusak ekosistem dan mengancam kesehatan manusia,
+      dari plastik sekali pakai hingga bahan kimia berbahaya dalam produk rumah tangga.  
+    </p>
 
 
-            <h6 class="desc-subtitle">Spesifikasi:</h6>
-            <ul class="spec-list">
-                <li>Isi: ±20 lembar</li>
-                <li>Ukuran: 3 x 4 cm</li>
-                <li>Berat: ±20 gram</li>
-            </ul>
-        </div>
-    </div>
+    <p>
+      Gas rumah kaca, salah satunya yang dihasilkan dari produksi plastik di seluruh dunia,
+      adalah salah satu penyebab iklim yang semakin panas akhir-akhir ini.
+      Karena itu, kita harus beralih ke produk yang lebih ramah lingkungan,
+      dan ini adalah alasan mengapa langkah ini penting, serta keuntungan yang akan kita peroleh.
+    </p>
 
 
-    <!-- CARA PENGGUNAAN -->
-    <div class="card_detailproduk1">
-        <h4 class="section-title">Cara Penggunaan</h4>
-        <div class="usage-box">
-            <div class="cara_penggunaan">
-                <img src="images/CaraPenggunaan.jpeg">
-            </div>
-        </div>
-    </div>
-</main>
+    <h3>Manfaat Produk Ramah Lingkungan:</h3>
+    <ul>
+      <li>Mengurangi Limbah dan Polusi: Produk ini biasanya bersifat biodegradable
+        (mudah terurai secara hayati) dan dapat didaur ulang, sehingga membantu
+        mengurangi sampah plastik di lautan dan Tempat Pembuangan Akhir (TPA).</li>
+      <li>Melestarikan Sumber Daya Alam: Menggunakan proses produksi yang hemat
+        energi serta bahan baku terbarukan seperti bambu dan kertas daur ulang
+        dapat mengurangi penggunaan sumber daya alam yang terbatas.</li>
+      <li>Meningkatkan Kesehatan Manusia: Produk ramah lingkungan,
+        seperti sabun dan pakaian organik, tidak mengandung bahan
+        kimia berbahaya sehingga dapat mengurangi risiko alergi,
+        iritasi kulit, dan gangguan pernapasan.</li>
+      <li>Meningkatkan Citra Perusahaan/Merek: Penggunaan kemasan
+        atau bahan yang ramah lingkungan dapat meningkatkan reputasi perusahaan
+        dan menarik konsumen yang peduli terhadap lingkungan.</li>
+      <li>Mendukung Ekonomi Berkelanjutan: Produk ramah lingkungan
+        dapat membuka peluang usaha baru serta mendukung perkembangan
+        industri yang lebih ramah terhadap lingkungan.</li>
+    </ul>
+  </div>
 
-<!-- 🔥 BUTTON FIXED (BARU) -->
-<div class="add-to-cart-fixed">
-    <button onclick="tambahKeranjang(
-'Pocket Soap Charm',
-15000,
-'images/Produk1.jpeg'
-)">
-Tambah ke keranjang
-</button>
-</div>
-
-
-<!-- Footer -->
+  <!-- Footer -->
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-col">
@@ -183,44 +175,6 @@ function logoutUser() {
   alert("Berhasil logout");
 
   window.location.href = "index.html";
-}
-
-</script>
-
-
-<script>
-
-function tambahKeranjang(nama, harga, gambar) {
-
-  let keranjang =
-    JSON.parse(localStorage.getItem("keranjang")) || [];
-
-  // cek apakah produk sudah ada
-  const existingProduct = keranjang.find(
-    item => item.nama === nama
-  );
-
-  if(existingProduct) {
-
-    existingProduct.qty += 1;
-
-  } else {
-
-    keranjang.push({
-      nama: nama,
-      harga: harga,
-      gambar: gambar,
-      qty: 1
-    });
-
-  }
-
-  localStorage.setItem(
-    "keranjang",
-    JSON.stringify(keranjang)
-  );
-
-  alert("Produk berhasil ditambahkan!");
 }
 
 </script>

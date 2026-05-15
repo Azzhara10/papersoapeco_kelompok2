@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <title>Paper Soap Eco</title>
-
 
 <link rel="stylesheet" href="style.css">
 <!-- Font Poppins -->
@@ -21,19 +19,28 @@
 <!-- Navbar -->
 <div class="navbar">
   <img src="images/logo.png" class="logo">
-
-
   <div class="menu">
     <a href="index.html">Home</a>
-    <a href="produk.html">Produk</a>
-    <a href="artikel.html">Artikel</a>
-    <a href="tentang.html">Tentang</a>
+
+   <div class="dropdown">
+  <button class="dropbtn">Produk</button>
+    
+    <div class="dropdown-content">
+      <a href="detailproduk1.html">Pocket Soap</a>
+      <a href="detailprodukrefill.html">Refill Soap</a>
+    </div>
+  </div>
+    <a href="artikel_depan.html">Artikel</a>
   </div>
 
+ <div class="right">
+    <div id="user-area">
+  <a href="Login.html" class="login-link">Login</a>
+</div>
 
-  <div class="right">
-    <a href="Login.html" class="login-link">Login</a>
+     <a href="keranjang.html" class="cart-link">
     <i class="fa-solid fa-cart-shopping"></i>
+  </a>
   </div>
 </div>
 
@@ -55,7 +62,6 @@
 <!-- CONTENT -->
 <div class="container">
 
-
 <!-- Banner -->
 <div class="tentang_perusahaan">
   <img src="images/tentang_perusahaan.png">
@@ -64,7 +70,7 @@
 
   <!-- PENJELASAN -->
    <h4 class="section-title_tentang1">Penjelasan</h4>
-  <div class="card">
+  <div class="card_tentangkami">
     Kami adalah inovator di bidang personal care yang menghadirkan solusi sanitasi modern untuk gaya hidup dinamis.
     Lahir dari kebutuhan akan kebersihan yang praktis, kami menciptakan Paper Soap yaitu sabun lembaran tipis yang efektif
     membunuh kuman dan larut seketika saat terkena air. Tanpa risiko bocor dan tanpa beban berat, produk unggulan kami
@@ -75,14 +81,14 @@
   <div class="line"></div>
   <!-- VISI -->
    <h4 class="section-title_tentang2">Visi</h4>
-  <div class="card center">
+  <div class="card_tentangkami">
     Mewujudkan dunia yang lebih bersih dan sehat melalui inovasi sabun ramah lingkungan yang meminimalisir limbah plastik.
   </div>
 
 
   <!-- MISI -->
   <h4 class="section-title_tentang3">Misi</h4>
-  <div class="card">
+  <div class="card_tentangkami">
     <ul>
       <li>Menggunakan bahan organik dan biodegradable yang aman bagi kulit.</li>
       <li>Mengurangi penggunaan kemasan plastik sekali pakai.</li>
@@ -96,7 +102,7 @@
 
   <!-- KONTAK -->
   <h4 class="section-title_tentang3">Kontak</h4>
-  <div class="card">
+  <div class="card_tentangkami">
     <p><i class="fa-solid fa-phone"></i> 0895619121526</p>
     <p><i class="fa-solid fa-envelope"></i> papersoapeco@gmail.com</p>
     <p><i class="fa-solid fa-location-dot"></i> Jl. Raya Pendidikan</p>
@@ -110,12 +116,12 @@
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-col">
-      <a href="#">Tentang Kami</a>
-      <a href="#">Kebijakan Privasi</a>
+      <a href="tentangkami.html">Tentang Kami</a>
+      <a href="kebijakanprivasi.html">Kebijakan Privasi</a>
     </div>
     <div class="footer-col">
-      <a href="#">Syarat & Ketentuan</a>
-      <a href="#">Kontak</a>
+      <a href="syarat_ketentuan.html">Syarat & Ketentuan</a>
+      <a href="kontak.html">Kontak</a>
     </div>
 
 
@@ -126,7 +132,54 @@
   </div>
 </footer>
 
+<!-- SCRIPT LOGIN PROFILE -->
+<script>
+
+const userArea = document.getElementById("user-area");
+
+const isLogin = localStorage.getItem("isLogin");
+const foto = localStorage.getItem("foto");
+
+if (isLogin === "true") {
+
+  userArea.innerHTML = `
+    
+    <div class="profile-dropdown">
+
+      <img 
+        src="${foto || 'images/user.jpeg'}" 
+        class="navbar-profile">
+
+      <div class="profile-menu">
+      
+        <a href="profile.html">
+          Profil
+        </a>
+
+        <a href="status.html">
+          Pesanan Saya
+        </a>
+
+        <a href="#" onclick="logoutUser()">
+          Logout
+        </a>
+
+      </div>
+
+    </div>
+  `;
+}
+
+function logoutUser() {
+
+  localStorage.removeItem("isLogin");
+
+  alert("Berhasil logout");
+
+  window.location.href = "index.html";
+}
+
+</script>
 
 </body>
 </html>
-

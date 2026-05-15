@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <title>Paper Soap Eco</title>
 
 <link rel="stylesheet" href="style.css">
@@ -11,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 
 <body>
 
@@ -32,7 +34,7 @@
   </div>
 
  <div class="right">
-   <div id="user-area">
+    <div id="user-area">
   <a href="Login.html" class="login-link">Login</a>
 </div>
 
@@ -42,6 +44,7 @@
   </div>
 </div>
 
+
 <!-- Back button -->
 <!-- Back button + Title -->
 <div class="cart-header">
@@ -49,70 +52,23 @@
     <i class="fa-solid fa-arrow-left"></i>
   </a>
 
-  <h1 class="cart-heading">
-    Detail Produk
+  <h1 class="cart-heading_kebijakan">
+    Syarat & Ketentuan
   </h1>
+
 </div>
 
-<!-- Banner -->
-<div class="banner">
-  <img src="images/Produk1.jpeg">
-</div>
-
-    <!-- PRODUK -->
-    <div>
-        <h3 class="product-name">Pocket Soap Charm</h3>
-        <p class="product-price_detail">Rp 15.000</p>
-    </div>
-        
-    <!-- DESKRIPSI -->
-    <div class="card_detailproduk1">
-        <h4 class="section-title">Deskripsi</h4>
-        <div class="desc-box">
-            <h5 class="desc-subtitle">Sabun Kertas Portable – Praktis & Higienis</h5>
-            <p class="desc-text">
-                Jaga kebersihan tangan kapan saja dengan sabun kertas yang praktis dibawa ke mana saja.
-            </p>
-            <h6 class="desc-subtitle">Keunggulan:</h6>
-            <ul class="feature-list">
-                <li>Praktis & higienis</li>
-                <li>Mudah dibawa</li>
-                <li>Cepat larut</li>
-                <li>Tersedia refill</li>
-            </ul>
+<!-- CONTENT -->
+  <div class="content_syarat">
+    <p>
+      Dengan mengakses dan menggunakan website Paper Soap Eco, Anda secara otomatis menyetujui seluruh aturan yang kami buat untuk menjamin keamanan dan kenyamanan bersama. Sebagai pengguna, Anda bertanggung jawab penuh untuk memberikan informasi data diri yang akurat saat mendaftar serta menjaga kerahasiaan kata sandi akun Anda agar tidak disalahgunakan oleh pihak lain. Kami menyediakan produk sabun kertas yang dirancang khusus untuk penggunaan luar (tangan), sehingga kami tidak bertanggung jawab atas efek samping yang muncul akibat penggunaan yang tidak sesuai petunjuk, seperti tertelan atau terkena mata. Seluruh transaksi pembelian yang Anda lakukan melalui website adalah sah dan mengikat, di mana harga produk dapat berubah sewaktu-waktu sesuai dengan kebijakan promo atau kondisi operasional perusahaan.
+    </p>
 
 
-            <h6 class="desc-subtitle">Spesifikasi:</h6>
-            <ul class="spec-list">
-                <li>Isi: ±20 lembar</li>
-                <li>Ukuran: 3 x 4 cm</li>
-                <li>Berat: ±20 gram</li>
-            </ul>
-        </div>
-    </div>
-
-
-    <!-- CARA PENGGUNAAN -->
-    <div class="card_detailproduk1">
-        <h4 class="section-title">Cara Penggunaan</h4>
-        <div class="usage-box">
-            <div class="cara_penggunaan">
-                <img src="images/CaraPenggunaan.jpeg">
-            </div>
-        </div>
-    </div>
-</main>
-
-<!-- 🔥 BUTTON FIXED (BARU) -->
-<div class="add-to-cart-fixed">
-    <button onclick="tambahKeranjang(
-'Pocket Soap Charm',
-15000,
-'images/Produk1.jpeg'
-)">
-Tambah ke keranjang
-</button>
-</div>
+    <p>
+      Mengenai proses pengiriman, kami bekerja sama dengan mitra logistik terpercaya untuk mengantarkan pesanan ke alamat Anda, namun perlu dipahami bahwa segala keterlambatan yang disebabkan oleh pihak kurir berada di luar kendali langsung kami. Jika Anda menerima produk dalam keadaan rusak atau tidak sesuai dengan pesanan, Anda berhak mengajukan komplain atau penukaran barang dengan syarat wajib melampirkan bukti video pembukaan paket (unboxing) maksimal dalam waktu 2x24 jam setelah barang diterima. Terakhir, seluruh konten yang ada di dalam website, mulai dari desain, logo, hingga artikel edukasi, adalah hak milik intelektual Paper Soap Eco yang tidak boleh disalin atau disebarluaskan tanpa izin resmi dari kami demi menjaga orisinalitas dan integritas merek.
+    </p>
+  </div>
 
 
 <!-- Footer -->
@@ -137,6 +93,7 @@ Tambah ke keranjang
 
 
 </footer>
+
 
 <!-- SCRIPT LOGIN PROFILE -->
 <script>
@@ -188,42 +145,6 @@ function logoutUser() {
 </script>
 
 
-<script>
-
-function tambahKeranjang(nama, harga, gambar) {
-
-  let keranjang =
-    JSON.parse(localStorage.getItem("keranjang")) || [];
-
-  // cek apakah produk sudah ada
-  const existingProduct = keranjang.find(
-    item => item.nama === nama
-  );
-
-  if(existingProduct) {
-
-    existingProduct.qty += 1;
-
-  } else {
-
-    keranjang.push({
-      nama: nama,
-      harga: harga,
-      gambar: gambar,
-      qty: 1
-    });
-
-  }
-
-  localStorage.setItem(
-    "keranjang",
-    JSON.stringify(keranjang)
-  );
-
-  alert("Produk berhasil ditambahkan!");
-}
-
-</script>
 
 </body>
 </html>

@@ -17,17 +17,28 @@
 <!-- Navbar -->
 <div class="navbar">
   <img src="images/logo.png" class="logo">
-
   <div class="menu">
     <a href="index.html">Home</a>
-    <a href="produk.html">Produk</a>
-    <a href="artikel.html">Artikel</a>
-    <a href="tentang.html">Tentang</a>
+
+   <div class="dropdown">
+  <button class="dropbtn">Produk</button>
+    
+    <div class="dropdown-content">
+      <a href="detailproduk1.html">Pocket Soap</a>
+      <a href="detailprodukrefill.html">Refill Soap</a>
+    </div>
+  </div>
+    <a href="artikel_depan.html">Artikel</a>
   </div>
 
-  <div class="right">
-    <a href="Login.html" class="login-link">Login</a>
+ <div class="right">
+   <div id="user-area">
+  <a href="Login.html" class="login-link">Login</a>
+</div>
+
+     <a href="keranjang.html" class="cart-link">
     <i class="fa-solid fa-cart-shopping"></i>
+  </a>
   </div>
 </div>
 
@@ -51,11 +62,11 @@
     <!-- PRODUK -->
     <div>
         <h3 class="product-name">Refill Soap Pack</h3>
-        <p class="product-price">Rp 10.000</p>
+        <p class="product-price_detail">Rp 10.000</p>
     </div>
         
     <!-- DESKRIPSI -->
-    <div class="card">
+    <div class="card_detailproduk1">
         <h4 class="section-title">Deskripsi</h4>
         <div class="desc-box">
             <h5 class="desc-subtitle">Sabun Kertas Portable – Praktis & Higienis</h5>
@@ -84,7 +95,7 @@
 
 
     <!-- CARA PENGGUNAAN -->
-    <div class="card">
+    <div class="card_detailproduk1">
         <h4 class="section-title">Cara Penggunaan</h4>
         <div class="usage-box">
             <div class="cara_penggunaan">
@@ -96,7 +107,13 @@
 
 <!-- 🔥 BUTTON FIXED (BARU) -->
 <div class="add-to-cart-fixed">
-    <button>Tambah ke keranjang</button>
+   <button onclick="tambahKeranjang(
+'Refill Soap Pack',
+10000,
+'images/ProdukRefill.jpeg'
+)">
+Tambah ke keranjang
+</button>
 </div>
 
 
@@ -104,12 +121,12 @@
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-col">
-      <a href="#">Tentang Kami</a>
-      <a href="#">Kebijakan Privasi</a>
+      <a href="tentangkami.html">Tentang Kami</a>
+      <a href="kebijakanprivasi.html">Kebijakan Privasi</a>
     </div>
     <div class="footer-col">
-      <a href="#">Syarat & Ketentuan</a>
-      <a href="#">Kontak</a>
+      <a href="syarat_ketentuan.html">Syarat & Ketentuan</a>
+      <a href="kontak.html">Kontak</a>
     </div>
 
 
@@ -123,6 +140,93 @@
 
 </footer>
 
+
+<!-- SCRIPT LOGIN PROFILE -->
+<script>
+
+const userArea = document.getElementById("user-area");
+
+const isLogin = localStorage.getItem("isLogin");
+const foto = localStorage.getItem("foto");
+
+if (isLogin === "true") {
+
+  userArea.innerHTML = `
+    
+    <div class="profile-dropdown">
+
+      <img 
+        src="${foto || 'images/user.jpeg'}" 
+        class="navbar-profile">
+
+      <div class="profile-menu">
+      
+        <a href="profile.html">
+          Profil
+        </a>
+
+        <a href="status.html">
+          Pesanan Saya
+        </a>
+
+        <a href="#" onclick="logoutUser()">
+          Logout
+        </a>
+
+      </div>
+
+    </div>
+  `;
+}
+
+function logoutUser() {
+
+  localStorage.removeItem("isLogin");
+
+  alert("Berhasil logout");
+
+  window.location.href = "index.html";
+}
+
+</script>
+
+
+<script>
+
+function tambahKeranjang(nama, harga, gambar) {
+
+  let keranjang =
+    JSON.parse(localStorage.getItem("keranjang")) || [];
+
+  // cek apakah produk sudah ada
+  const existingProduct = keranjang.find(
+    item => item.nama === nama
+  );
+
+  if(existingProduct) {
+
+    existingProduct.qty += 1;
+
+  } else {
+
+    keranjang.push({
+      nama: nama,
+      harga: harga,
+      gambar: gambar,
+      qty: 1
+    });
+
+  }
+
+  localStorage.setItem(
+    "keranjang",
+    JSON.stringify(keranjang)
+  );
+
+  alert("Produk berhasil ditambahkan!");
+}
+
+</script>
 
 </body>
 </html>

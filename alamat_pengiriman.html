@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Paper Soap Eco</title>
 
 <link rel="stylesheet" href="style.css">
@@ -13,7 +12,6 @@
 </head>
 
 <body>
-
 <!-- Navbar -->
 <div class="navbar">
   <img src="images/logo.png" class="logo">
@@ -42,6 +40,7 @@
   </div>
 </div>
 
+
 <!-- Back button -->
 <!-- Back button + Title -->
 <div class="cart-header">
@@ -49,71 +48,68 @@
     <i class="fa-solid fa-arrow-left"></i>
   </a>
 
-  <h1 class="cart-heading">
-    Detail Produk
-  </h1>
 </div>
 
-<!-- Banner -->
-<div class="banner">
-  <img src="images/Produk1.jpeg">
-</div>
 
-    <!-- PRODUK -->
-    <div>
-        <h3 class="product-name">Pocket Soap Charm</h3>
-        <p class="product-price_detail">Rp 15.000</p>
+ <!-- MAIN -->
+    <main class="main-content">
+        <div class="auth-container">
+            <h1 class="auth-title">Tambah Alamat Pengiriman</h1>
+            <p class="auth-subtitle">Pastikan alamat lengkap dan benar</p>
+
+    <!-- FORM -->
+    <form class="auth-form">
+
+<!-- Nama Lengkap -->
+    <label class="form-label">Nama Penerima</label>
+    <input
+        type="text"
+        class="form-input"
+        placeholder="Masukkan Nama Penerima"
+        required>
+
+
+      <label class="form-label">No. HP</label>
+    <input
+        type="tel"
+        class="form-input"
+        placeholder="Masukkan No. HP"
+        required>
+
+
+      <div class="form-group">
+  <label class="form-label">Alamat Lengkap</label>
+  <textarea
+    class="form-input"
+    placeholder="Masukkan Alamat Lengkap"
+    required></textarea>
     </div>
-        
-    <!-- DESKRIPSI -->
-    <div class="card_detailproduk1">
-        <h4 class="section-title">Deskripsi</h4>
-        <div class="desc-box">
-            <h5 class="desc-subtitle">Sabun Kertas Portable – Praktis & Higienis</h5>
-            <p class="desc-text">
-                Jaga kebersihan tangan kapan saja dengan sabun kertas yang praktis dibawa ke mana saja.
-            </p>
-            <h6 class="desc-subtitle">Keunggulan:</h6>
-            <ul class="feature-list">
-                <li>Praktis & higienis</li>
-                <li>Mudah dibawa</li>
-                <li>Cepat larut</li>
-                <li>Tersedia refill</li>
-            </ul>
+
+      <div class="form-group">
+        <label>Provinsi</label>
+        <input type="text" placeholder="Masukkan Nama Provinsi">
+      </div>
 
 
-            <h6 class="desc-subtitle">Spesifikasi:</h6>
-            <ul class="spec-list">
-                <li>Isi: ±20 lembar</li>
-                <li>Ukuran: 3 x 4 cm</li>
-                <li>Berat: ±20 gram</li>
-            </ul>
+      <div class="row">
+        <div class="form-group small">
+          <label>Kota</label>
+          <input type="text" placeholder="Masukkan Nama Kota">
         </div>
-    </div>
 
 
-    <!-- CARA PENGGUNAAN -->
-    <div class="card_detailproduk1">
-        <h4 class="section-title">Cara Penggunaan</h4>
-        <div class="usage-box">
-            <div class="cara_penggunaan">
-                <img src="images/CaraPenggunaan.jpeg">
-            </div>
+        <div class="form-group small">
+          <label>Kode Pos</label>
+          <input type="text" placeholder="Masukkan Kode Pos">
         </div>
-    </div>
-</main>
+      </div>
 
-<!-- 🔥 BUTTON FIXED (BARU) -->
-<div class="add-to-cart-fixed">
-    <button onclick="tambahKeranjang(
-'Pocket Soap Charm',
-15000,
-'images/Produk1.jpeg'
-)">
-Tambah ke keranjang
-</button>
-</div>
 
+      <button type="submit" class="simpanalamat-btn">
+        Simpan Alamat
+    </button>
+    </form>
+  </section>
 
 <!-- Footer -->
 <footer class="footer">
@@ -183,44 +179,6 @@ function logoutUser() {
   alert("Berhasil logout");
 
   window.location.href = "index.html";
-}
-
-</script>
-
-
-<script>
-
-function tambahKeranjang(nama, harga, gambar) {
-
-  let keranjang =
-    JSON.parse(localStorage.getItem("keranjang")) || [];
-
-  // cek apakah produk sudah ada
-  const existingProduct = keranjang.find(
-    item => item.nama === nama
-  );
-
-  if(existingProduct) {
-
-    existingProduct.qty += 1;
-
-  } else {
-
-    keranjang.push({
-      nama: nama,
-      harga: harga,
-      gambar: gambar,
-      qty: 1
-    });
-
-  }
-
-  localStorage.setItem(
-    "keranjang",
-    JSON.stringify(keranjang)
-  );
-
-  alert("Produk berhasil ditambahkan!");
 }
 
 </script>

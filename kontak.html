@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <title>Paper Soap Eco</title>
 
 <link rel="stylesheet" href="style.css">
@@ -11,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 
 <body>
 
@@ -32,7 +34,7 @@
   </div>
 
  <div class="right">
-   <div id="user-area">
+    <div id="user-area">
   <a href="Login.html" class="login-link">Login</a>
 </div>
 
@@ -42,6 +44,7 @@
   </div>
 </div>
 
+
 <!-- Back button -->
 <!-- Back button + Title -->
 <div class="cart-header">
@@ -49,71 +52,37 @@
     <i class="fa-solid fa-arrow-left"></i>
   </a>
 
-  <h1 class="cart-heading">
-    Detail Produk
+  <h1 class="cart-heading_kebijakan">
+    Kontak Kami
   </h1>
+
 </div>
 
-<!-- Banner -->
-<div class="banner">
-  <img src="images/Produk1.jpeg">
+<!-- CONTENT -->
+  <div class="content_kontak">
+    <h3>Butuh Bantuan?</h3>
+    <p>Kami siap membantu Anda! Hubungi kami langsung melalui WhatsApp.</p>
+
+
+    <!-- BUTTON -->
+    <a href="https://wa.me/qr/Y4XE5HJV4CRLN1" class="btn-wa">
+      <i class="fa-brands fa-whatsapp"></i>
+      Chat via WhatsApp
+    </a>
+
+
+  </div>
+
+  <div class="line"></div>
+  <!-- JAM OPERASIONAL -->
+  <div class="jam">
+    <h3>Jam Operasional:</h3>
+    <p>Senin - Minggu: 08.00–21.00 WITA</p>
+    <p>Respon cepat dalam 1–2 jam</p>
+  </div>
+
+
 </div>
-
-    <!-- PRODUK -->
-    <div>
-        <h3 class="product-name">Pocket Soap Charm</h3>
-        <p class="product-price_detail">Rp 15.000</p>
-    </div>
-        
-    <!-- DESKRIPSI -->
-    <div class="card_detailproduk1">
-        <h4 class="section-title">Deskripsi</h4>
-        <div class="desc-box">
-            <h5 class="desc-subtitle">Sabun Kertas Portable – Praktis & Higienis</h5>
-            <p class="desc-text">
-                Jaga kebersihan tangan kapan saja dengan sabun kertas yang praktis dibawa ke mana saja.
-            </p>
-            <h6 class="desc-subtitle">Keunggulan:</h6>
-            <ul class="feature-list">
-                <li>Praktis & higienis</li>
-                <li>Mudah dibawa</li>
-                <li>Cepat larut</li>
-                <li>Tersedia refill</li>
-            </ul>
-
-
-            <h6 class="desc-subtitle">Spesifikasi:</h6>
-            <ul class="spec-list">
-                <li>Isi: ±20 lembar</li>
-                <li>Ukuran: 3 x 4 cm</li>
-                <li>Berat: ±20 gram</li>
-            </ul>
-        </div>
-    </div>
-
-
-    <!-- CARA PENGGUNAAN -->
-    <div class="card_detailproduk1">
-        <h4 class="section-title">Cara Penggunaan</h4>
-        <div class="usage-box">
-            <div class="cara_penggunaan">
-                <img src="images/CaraPenggunaan.jpeg">
-            </div>
-        </div>
-    </div>
-</main>
-
-<!-- 🔥 BUTTON FIXED (BARU) -->
-<div class="add-to-cart-fixed">
-    <button onclick="tambahKeranjang(
-'Pocket Soap Charm',
-15000,
-'images/Produk1.jpeg'
-)">
-Tambah ke keranjang
-</button>
-</div>
-
 
 <!-- Footer -->
 <footer class="footer">
@@ -137,6 +106,7 @@ Tambah ke keranjang
 
 
 </footer>
+
 
 <!-- SCRIPT LOGIN PROFILE -->
 <script>
@@ -188,42 +158,7 @@ function logoutUser() {
 </script>
 
 
-<script>
 
-function tambahKeranjang(nama, harga, gambar) {
-
-  let keranjang =
-    JSON.parse(localStorage.getItem("keranjang")) || [];
-
-  // cek apakah produk sudah ada
-  const existingProduct = keranjang.find(
-    item => item.nama === nama
-  );
-
-  if(existingProduct) {
-
-    existingProduct.qty += 1;
-
-  } else {
-
-    keranjang.push({
-      nama: nama,
-      harga: harga,
-      gambar: gambar,
-      qty: 1
-    });
-
-  }
-
-  localStorage.setItem(
-    "keranjang",
-    JSON.stringify(keranjang)
-  );
-
-  alert("Produk berhasil ditambahkan!");
-}
-
-</script>
 
 </body>
 </html>

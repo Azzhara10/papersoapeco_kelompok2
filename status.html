@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Navbar</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Font Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+  <img src="images/logo.png" class="logo">
+
+  <div class="menu">
+    <a href="index.html">Home</a>
+
+    <div class="dropdown">
+      <button class="dropbtn">Produk</button>
+
+      <div class="dropdown-content">
+        <a href="detailproduk1.html">Pocket Soap</a>
+        <a href="detailprodukrefill.html">Refill Soap</a>
+      </div>
+    </div>
+
+    <a href="artikel_depan.html">Artikel</a>
+  </div>
+
+  <div class="right">
+
+    <div id="user-area">
+      <a href="Login.html" class="login-link">Login</a>
+    </div>
+
+    <a href="keranjang.html" class="cart-link">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </a>
+
+  </div>
+
+</div>
+
+<!-- Back button -->
+<!-- Back button + Title -->
+<div class="cart-header">
+  <a href="index.html" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i>
+  </a>
+
+  <h1 class="cart-heading_status">
+    Pesanan Saya
+  </h1>
+
+</div>
+
+<!-- FILTER -->
+<div class="filter-container">
+
+  <button class="filter-btn active">Semua</button>
+  <button class="filter-btn">Dikemas</button>
+  <button class="filter-btn">Dikirim</button>
+  <button class="filter-btn">Selesai</button>
+
+</div>
+
+<!-- CARD PESANAN -->
+<!-- LIST PESANAN -->
+<div id="product-list"></div>
+
+<div id="order-total"></div>
+
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <a href="tentangkami.html">Tentang Kami</a>
+      <a href="kebijakanprivasi.html">Kebijakan Privasi</a>
+    </div>
+    <div class="footer-col">
+      <a href="syarat_ketentuan.html">Syarat & Ketentuan</a>
+      <a href="kontak.html">Kontak</a>
+    </div>
+
+
+  </div>
+
+
+  <div class="footer-bottom">
+    © 2026 Paper Soap Eco. All Rights Reserved.
+  </div>
+
+
+</footer>
+
+
+<script>
+
+function formatRupiah(angka){
+  return "Rp " + angka.toLocaleString("id-ID");
+}
+
+let orders =
+  JSON.parse(localStorage.getItem("orders")) || [];
+
+const productList =
+  document.getElementById("product-list");
+
+const filterButtons =
+  document.querySelectorAll(".filter-btn");
+
+/* =========================
+   TAMPILKAN PESANAN
+========================= */
+
+function tampilkanPesanan(filter = "Semua") {
+
+  productList.innerHTML = "";
+
+if(orders.length === 0){
+
+  productList.innerHTML = `
+
+    <div class="empty-order-box">
+
+      <img 
+        src="images/icon-order.svg" 
+        alt="Empty Order">
+
+      <p>
+        Belum ada pesanan
+      </p>
+
+    </div>
+
+  `;
+
+  return;
+}
+
+  orders.forEach(order => {
+
+    let currentStatus = filter;
+
+    if(filter === "Semua"){
+      currentStatus = "Selesai";
+    }
+
+    let total = 0;
+    let totalQty = 0;
+
+    /* =========================
+       CARD PENGIRIMAN
+    ========================= */
+
+    if(currentStatus === "Dikirim"){
+
+      productList.innerHTML += `
+
+        <div class="shipping-card">
+
+          <div class="shipping-section">
+
+            <h4>Info Pengiriman</h4>
+
+            <p class="resi-number">
+              JX1859265907
+            </p>
+
+          </div>
+
+          <div class="shipping-line"></div>
+
+          <div class="shipping-section">
+
+            <h4>Alamat Pengiriman</h4>
+
+            <div class="shipping-address">
+
+              <i class="fa-solid fa-location-dot"></i>
+
+              <div>
+
+               <h5>
+  ${order.nama}
+  <span class="shipping-phone">
+    (${order.hp})
+  </span>
+</h5>
+
+<p>
+  ${order.alamat}
+</p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+    }
+
+    /* =========================
+       CARD ORDER
+    ========================= */
+
+    let orderHTML = `
+
+      <div class="order-card">
+
+        <div class="order-top">
+
+          <h3>Paper Soap Eco</h3>
+
+          <span class="status">
+            ${currentStatus}
+          </span>
+
+        </div>
+
+    `;
+
+    order.items.forEach(item => {
+
+      let subtotal =
+        item.harga * item.qty;
+
+      total += subtotal;
+      totalQty += item.qty;
+
+      orderHTML += `
+
+        <div class="product-item">
+
+          <img src="${item.gambar}" alt="Produk">
+
+          <div class="product-info">
+
+            <h4>${item.nama}</h4>
+
+            <span>x${item.qty}</span>
+
+          </div>
+
+          <div class="product-price">
+            ${formatRupiah(subtotal)}
+          </div>
+
+        </div>
+
+      `;
+    });
+
+    orderHTML += `
+
+        <div class="order-total-inside">
+          Total ${totalQty} produk:
+          <span>${formatRupiah(total)}</span>
+        </div>
+
+      </div>
+
+    `;
+
+    productList.innerHTML += orderHTML;
+
+    /* =========================
+       REVIEW
+    ========================= */
+
+    if(currentStatus === "Selesai"){
+
+      productList.innerHTML += `
+
+        <div class="review-wrapper">
+
+         ${order.sudahReview ? `
+
+<button class="review-btn done-review">
+  Ulasan Terkirim
+</button>
+
+` : `
+
+<a href="beriulasan.html">
+
+  <button class="review-btn">
+    Beri Ulasan
+  </button>
+
+</a>
+
+`}
+
+          <div class="review-box">
+
+            <div class="review-top">
+
+              <h4>Ulasan Cepat</h4>
+
+             <div class="stars">
+  ${
+    order.review
+    ? Array.from({ length: 5 }, (_, i) =>
+        `<i class="fa-${i < order.review.rating ? "solid" : "regular"} fa-star"></i>`
+      ).join("")
+    : `
+      <i class="fa-regular fa-star star"></i>
+      <i class="fa-regular fa-star star"></i>
+      <i class="fa-regular fa-star star"></i>
+      <i class="fa-regular fa-star star"></i>
+      <i class="fa-regular fa-star star"></i>
+    `
+  }
+</div>
+
+            </div>
+
+            <div class="review-line"></div>
+
+            <div class="review-bottom">
+
+              <input
+  type="text"
+  value="${
+    order.review
+    ? order.review.komentar
+    : ""
+  }"
+  placeholder="Tulis Ulasan"
+  ${
+    order.sudahReview
+    ? "readonly"
+    : ""
+  }>
+
+<button 
+  class="send-review"
+  ${order.sudahReview ? "disabled" : ""}>
+
+  ${
+    order.sudahReview
+    ? "Terkirim"
+    : "Kirim"
+  }
+
+</button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+    }
+
+  });
+
+}
+
+/* =========================
+   FILTER BUTTON
+========================= */
+
+filterButtons.forEach(button => {
+
+  button.addEventListener("click", function(){
+
+    document
+      .querySelector(".filter-btn.active")
+      .classList.remove("active");
+
+    this.classList.add("active");
+
+    tampilkanPesanan(this.innerText);
+
+  });
+
+});
+
+/* =========================
+   LOAD AWAL
+========================= */
+
+tampilkanPesanan();
+
+document.addEventListener("click", function(e){
+
+  /* =========================
+     STAR CLICK
+  ========================= */
+
+  if(e.target.classList.contains("star")){
+
+    let stars =
+      e.target.parentElement.querySelectorAll(".star");
+
+    let index =
+      [...stars].indexOf(e.target);
+
+    stars.forEach((star, i) => {
+
+      if(i <= index){
+
+        star.classList.remove("fa-regular");
+        star.classList.add("fa-solid");
+        star.classList.add("active");
+
+      } else {
+
+        star.classList.remove("fa-solid");
+        star.classList.add("fa-regular");
+        star.classList.remove("active");
+
+      }
+
+    });
+
+  }
+
+  /* =========================
+     KIRIM ULASAN
+  ========================= */
+
+  if(e.target.classList.contains("send-review")){
+
+    let wrapper =
+      e.target.closest(".review-wrapper");
+
+    let input =
+      wrapper.querySelector("input");
+
+    let reviewText =
+      input.value.trim();
+
+    let activeStars =
+      wrapper.querySelectorAll(".star.active").length;
+
+    if(activeStars === 0){
+      alert("Pilih rating dulu!");
+      return;
+    }
+
+    if(reviewText === ""){
+      alert("Tulis ulasan dulu!");
+      return;
+    }
+
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+let orderIndex = orders.findIndex(o => o.items.length > 0);
+
+if (orderIndex !== -1) {
+
+  orders[orderIndex].review = {
+    rating: activeStars,
+    komentar: reviewText
+  };
+
+  orders[orderIndex].sudahReview = true;
+
+  localStorage.setItem("orders", JSON.stringify(orders));
+}
+
+alert("Ulasan berhasil dikirim!");
+input.value = "";
+
+tampilkanPesanan(); // ⬅️ penting biar UI update
+
+  }
+
+});
+
+</script>
+
+
+<!-- SCRIPT LOGIN PROFILE -->
+<script>
+
+const userArea = document.getElementById("user-area");
+
+const isLogin = localStorage.getItem("isLogin");
+const foto = localStorage.getItem("foto");
+
+if (isLogin === "true") {
+
+  userArea.innerHTML = `
+    
+    <div class="profile-dropdown">
+
+      <img 
+        src="${foto || 'images/user.jpeg'}" 
+        class="navbar-profile">
+
+      <div class="profile-menu">
+      
+        <a href="profile.html">
+          Profil
+        </a>
+
+        <a href="status.html">
+          Pesanan Saya
+        </a>
+
+        <a href="#" onclick="logoutUser()">
+          Logout
+        </a>
+
+      </div>
+
+    </div>
+  `;
+}
+
+function logoutUser() {
+
+  localStorage.removeItem("isLogin");
+
+  alert("Berhasil logout");
+
+  window.location.href = "index.html";
+}
+
+</script>
+
+
+</body>
+</html>
+
+
+
+

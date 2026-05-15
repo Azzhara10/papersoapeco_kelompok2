@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <title>Paper Soap Eco</title>
+
 
 <link rel="stylesheet" href="style.css">
 <!-- Font Poppins -->
@@ -13,7 +15,6 @@
 </head>
 
 <body>
-
 <!-- Navbar -->
 <div class="navbar">
   <img src="images/logo.png" class="logo">
@@ -32,7 +33,7 @@
   </div>
 
  <div class="right">
-   <div id="user-area">
+    <div id="user-area">
   <a href="Login.html" class="login-link">Login</a>
 </div>
 
@@ -42,80 +43,59 @@
   </div>
 </div>
 
+
 <!-- Back button -->
 <!-- Back button + Title -->
 <div class="cart-header">
-  <a href="index.html" class="back-btn">
+  <a href="artikel_depan.html" class="back-btn">
     <i class="fa-solid fa-arrow-left"></i>
   </a>
 
-  <h1 class="cart-heading">
-    Detail Produk
+  <h1 class="cart-heading_artikel1">
+    Solusi Praktis dan Ramah Lingkungan
   </h1>
+
 </div>
+
+<!-- CONTENT -->
+<div class="container">
 
 <!-- Banner -->
-<div class="banner">
-  <img src="images/Produk1.jpeg">
+<div class="gambar_artikel3">
+  <img src="images/artikel3.png">
 </div>
 
-    <!-- PRODUK -->
-    <div>
-        <h3 class="product-name">Pocket Soap Charm</h3>
-        <p class="product-price_detail">Rp 15.000</p>
-    </div>
-        
-    <!-- DESKRIPSI -->
-    <div class="card_detailproduk1">
-        <h4 class="section-title">Deskripsi</h4>
-        <div class="desc-box">
-            <h5 class="desc-subtitle">Sabun Kertas Portable – Praktis & Higienis</h5>
-            <p class="desc-text">
-                Jaga kebersihan tangan kapan saja dengan sabun kertas yang praktis dibawa ke mana saja.
-            </p>
-            <h6 class="desc-subtitle">Keunggulan:</h6>
-            <ul class="feature-list">
-                <li>Praktis & higienis</li>
-                <li>Mudah dibawa</li>
-                <li>Cepat larut</li>
-                <li>Tersedia refill</li>
-            </ul>
+<!-- CONTENT -->
+  <div class="content_artikel3">
+    <p>
+      Lahirnya inovasi ini merupakan respons kritis terhadap darurat ekologi global,
+      di mana Asia kini menempati posisi mengkhawatirkan sebagai penyumbang limbah
+      terbesar di dunia. Berangkat dari kegelisahan tersebut, Meilda, dan tim menginisiasi
+      sebuah gerakan transformatif untuk mengelola limbah menjadi produk bernilai guna tinggi
+      melalui prinsip ekonomi sirkular. Di tengah mobilitas masyarakat urban yang kian pesat,
+      akses terhadap sanitasi yang layak di ruang publik sering kali menemui jalan buntu;
+      toilet umum, restoran, dan fasilitas transportasi kerap gagal menyediakan sarana
+      kebersihan yang memadai. Inovasi Paper Soap hadir bukan sekadar sebagai produk komersial,
+      melainkan solusi taktis bagi pelajar dan pelancong yang membutuhkan kepraktisan tanpa harus
+      mengorbankan standar higienitas pribadi mereka.  
+    </p>
 
 
-            <h6 class="desc-subtitle">Spesifikasi:</h6>
-            <ul class="spec-list">
-                <li>Isi: ±20 lembar</li>
-                <li>Ukuran: 3 x 4 cm</li>
-                <li>Berat: ±20 gram</li>
-            </ul>
-        </div>
-    </div>
+    <p>
+      Pengembangan produk ini di Makassar menjadi langkah strategis untuk mengintervensi kebiasaan
+      masyarakat lokal menuju pola hidup yang lebih berkelanjutan. Dengan mengeliminasi penggunaan
+      bahan kimia agresif, sabun kertas ini tidak hanya memproteksi kesehatan tubuh dari risiko
+      toksisitas, tetapi juga secara aktif memutus rantai pencemaran lingkungan yang selama ini
+      merusak ekosistem air. Kami meyakini bahwa inovasi yang berorientasi pada alam adalah bentuk
+      tanggung jawab moral yang nyata. Dengan beralih ke produk yang minim residu kimia,
+      kita tidak hanya menjaga keindahan alam hari ini, tetapi juga sedang mengamankan hak
+      generasi mendatang untuk mewarisi bumi yang sehat dan lestari.
+    </p>
+
+  </div>
 
 
-    <!-- CARA PENGGUNAAN -->
-    <div class="card_detailproduk1">
-        <h4 class="section-title">Cara Penggunaan</h4>
-        <div class="usage-box">
-            <div class="cara_penggunaan">
-                <img src="images/CaraPenggunaan.jpeg">
-            </div>
-        </div>
-    </div>
-</main>
-
-<!-- 🔥 BUTTON FIXED (BARU) -->
-<div class="add-to-cart-fixed">
-    <button onclick="tambahKeranjang(
-'Pocket Soap Charm',
-15000,
-'images/Produk1.jpeg'
-)">
-Tambah ke keranjang
-</button>
-</div>
-
-
-<!-- Footer -->
+  <!-- Footer -->
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-col">
@@ -137,6 +117,7 @@ Tambah ke keranjang
 
 
 </footer>
+
 
 <!-- SCRIPT LOGIN PROFILE -->
 <script>
@@ -186,44 +167,5 @@ function logoutUser() {
 }
 
 </script>
-
-
-<script>
-
-function tambahKeranjang(nama, harga, gambar) {
-
-  let keranjang =
-    JSON.parse(localStorage.getItem("keranjang")) || [];
-
-  // cek apakah produk sudah ada
-  const existingProduct = keranjang.find(
-    item => item.nama === nama
-  );
-
-  if(existingProduct) {
-
-    existingProduct.qty += 1;
-
-  } else {
-
-    keranjang.push({
-      nama: nama,
-      harga: harga,
-      gambar: gambar,
-      qty: 1
-    });
-
-  }
-
-  localStorage.setItem(
-    "keranjang",
-    JSON.stringify(keranjang)
-  );
-
-  alert("Produk berhasil ditambahkan!");
-}
-
-</script>
-
 </body>
 </html>
